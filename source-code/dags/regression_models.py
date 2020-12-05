@@ -4,13 +4,13 @@ from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.papermill_operator import PapermillOperator
 
-project = models.Variable.get('gcp_project')
-region = models.Variable.get('gcp_region')
-zone = models.Variable.get('gcp_zone')
-input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_test')
-output_bucket_name = models.Variable.get('gcs_output_bucket_test')
+project = Variable.get('gcp_project')
+region = Variable.get('gcp_region')
+zone = Variable.get('gcp_zone')
+input_bucket = 'gs://' + Variable.get('gcs_input_bucket_test')
+output_bucket_name = Variable.get('gcs_output_bucket_test')
 output_bucket = 'gs://' + output_bucket_name
-ref_bucket = models.Variable.get('gcs_ref_bucket_test')
+ref_bucket = Variable.get('gcs_ref_bucket_test')
 output_prefix = 'output'
 
 
@@ -57,7 +57,7 @@ random_forest_regression = PapermillOperator(
 
 evaluate_models = PapermillOperator(
     task_id='data_processing',
-    input_nb='/home/airflow/gcs/data/evaluate_models.ipynb',
+    input_nb='/home/airflow/gcs/data/evaluate_ipynb',
     output_nb='/home/airflow/gcs/data/evaluate_models_out.ipynb',
     parameters={},
     dag=dag
