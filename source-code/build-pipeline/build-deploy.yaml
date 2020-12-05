@@ -6,3 +6,7 @@ steps:
   args: ['cp', 'notebooks/data_preprocessing.ipynb', 'gs://${_COMPOSER_INPUT_BUCKET}']
   dir: '$REPO_NAME/source-code'
   id: 'deploy-test-input-file'
+- name: gcr.io/cloud-builders/gsutil
+  args: ['cp', 'dags/data_preprocessing.ipynb', 'gs://${$COMPOSER_DAG_BUCKET}']
+  dir: '$REPO_NAME/source-code'
+  id: 'set dag'
