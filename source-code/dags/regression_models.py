@@ -23,15 +23,15 @@ default_args = {
 }
 
 dag = DAG(
-    'airflow_kubernetes',
+    'regression_models',
     default_args=default_args,
-    description='kubernetes test of dag'
+    description='DAG to train multiple regression models'
 )
 
 data_preprocessing = PapermillOperator(
     task_id='data_preprocessing',
     input_nb=input_bucket+'/data_preprocessing.ipynb',
-    output_nb=output_bucket'/data_preprocessing_out.ipynb',
+    output_nb=output_bucket+'/data_preprocessing_out.ipynb',
     parameters={},
     dag=dag
 )
