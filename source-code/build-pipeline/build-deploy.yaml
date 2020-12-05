@@ -10,3 +10,6 @@ steps:
   args: ['cp', 'dags/regression_models.py', '${_COMPOSER_DAG_BUCKET}']
   dir: '$REPO_NAME/source-code'
   id: 'set dag'
+- name: gcr.io/cloud-builders/gcloud
+  args: ['composer', 'environments', 'run', '${_COMPOSER_ENV_NAME}', '--location', '${_COMPOSER_REGION}', 'trigger_dag', '--', '${_COMPOSER_DAG_NAME_TEST}', '--run_id=$BUILD_ID']
+  id: 'trigger-pipeline-execution'
