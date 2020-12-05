@@ -17,5 +17,6 @@ export COMPOSER_ZONE_ID='europe-west3-c'
 export COMPOSER_ENV_NAME='airflowcluster'
 export SOURCE_CODE_REPO='data-pipeline-source'
 export COMPOSER_DAG_NAME_TEST='regression_models'
+export SOURCE_CODE_REPO='airflow'
 
 #TODO script aanroepen en dan deze variables setten
