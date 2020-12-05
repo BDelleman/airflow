@@ -11,7 +11,6 @@ zone = models.Variable.get('gcp_zone')
 input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_test')
 output_bucket_name = models.Variable.get('gcs_output_bucket_test')
 output_bucket = 'gs://' + output_bucket_name
-ref_bucket = models.Variable.get('gcs_ref_bucket_test')
 output_prefix = 'output'
 
 
