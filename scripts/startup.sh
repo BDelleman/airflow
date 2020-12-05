@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PROJECT_ID="terraform-295217 "
+PROJECT_ID="airflowvs"
 COMPOSER_ENV_NAME="airflowcluster"
 COMPOSER_REGION="europe-west3"
 COMPOSER_ZONE_ID="europe-west3-c"
