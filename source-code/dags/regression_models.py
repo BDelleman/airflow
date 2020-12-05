@@ -23,7 +23,7 @@ default_args = {
 }
 
 dag = DAG(
-    'regression_models',
+    dag_id='regression_models',
     default_args=default_args,
     description='DAG to train multiple regression models'
 )
