@@ -16,7 +16,7 @@ output_prefix = 'output'
 
 default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
-    'schedule_interval': '@daily'
+    'schedule_interval': '@daily',
     'project': project,
     'zone': zone,
     'region': region,
