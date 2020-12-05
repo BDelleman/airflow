@@ -13,7 +13,7 @@ steps:
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
   args: ['wait_for_dag_deployment.sh', '${_COMPOSER_ENV_NAME}', '${_COMPOSER_REGION}', '${_COMPOSER_DAG_NAME_TEST}', '6', '20']
-  dir: '$REPO_NAME/build-pipeline'
+  dir: '$REPO_NAME/source-code/build-pipeline'
   id: 'wait-for-dag-deployed-on-composer'
 - name: gcr.io/cloud-builders/gcloud
   args: ['composer', 'environments', 'run', '${_COMPOSER_ENV_NAME}', '--location', '${_COMPOSER_REGION}', 'trigger_dag', '--', '${_COMPOSER_DAG_NAME_TEST}']
