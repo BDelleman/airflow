@@ -53,4 +53,9 @@ _COMPOSER_ENV_NAME=$COMPOSER_ENV_NAME,\
 _COMPOSER_REGION=$COMPOSER_REGION,\
 _COMPOSER_DAG_NAME_TEST=$COMPOSER_DAG_NAME_TEST
 
+gcloud composer environments update $COMPOSER_ENV_NAME \\
+--update-pypi-packages-from-file ~/airflow/env-setup/requirements.txt \\
+--location ${COMPOSER_REGION}
+
+
 #CHECKPOINT WERKT
