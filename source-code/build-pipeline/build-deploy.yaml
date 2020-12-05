@@ -7,6 +7,6 @@ steps:
   dir: '$REPO_NAME/source-code'
   id: 'deploy-test-input-file'
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'dags/regression_models.py', 'gs://${$COMPOSER_DAG_BUCKET}']
+  args: ['cp', 'dags/regression_models.py', 'gs://${_COMPOSER_DAG_BUCKET}']
   dir: '$REPO_NAME/source-code'
   id: 'set dag'
