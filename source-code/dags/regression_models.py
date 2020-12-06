@@ -31,7 +31,7 @@ with models.DAG(
     data_preprocessing = PapermillOperator(
         task_id='data_preprocessing',
         input_nb=input_bucket+'/data_preprocessing.ipynb',
-        output_nb='/home/airflow/gcs/data/data_preprocessing_out.ipynb',
+        output_nb=output_bucket+'/data_preprocessing_out.ipynb',
         parameters={},
     )
 
