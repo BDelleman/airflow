@@ -3,7 +3,7 @@ steps:
   args: ['clone', 'https://github.com/BDelleman/$REPO_NAME']
   id: 'check-out-source-code'
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'notebooks/data_preprocessing.ipynb', 'gs://${_COMPOSER_INPUT_BUCKET}']
+  args: ['cp', 'notebooks/data_preprocessing.ipynb', '${_COMPOSER_DAG_BUCKET}/data']
   dir: '$REPO_NAME/source-code'
   id: 'deploy-test-input-file'
 - name: gcr.io/cloud-builders/gsutil
