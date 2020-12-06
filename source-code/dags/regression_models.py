@@ -13,8 +13,6 @@ output_bucket_name = models.Variable.get('gcs_output_bucket_test')
 output_bucket = 'gs://' + output_bucket_name
 output_prefix = 'output'
 
-def create_files
-
 default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
     'schedule_interval': '@daily',
