@@ -75,4 +75,4 @@ cleanup = PapermillOperator(
     dag=dag
 )
 """
-data_preprocessing
+check_buckets >> data_preprocessing
