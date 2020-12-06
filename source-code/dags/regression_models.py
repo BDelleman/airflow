@@ -22,13 +22,13 @@ default_args = {
     'region': region,
 }
 with models.DAG(
-    dag_id='regression_models',
-    default_args=default_args,
-    description='DAG to train multiple regression models') as dag:
+    'regression_models',
+    default_args=default_args) as dag:
     check_buckets = BashOperator(
         task_id='check_buckets',
-        bash_command='echo $input_bucket',
+        bash_command='echo input_bucket',
     )
+    
     data_preprocessing = PapermillOperator(
         task_id='data_preprocessing',
         input_nb=input_bucket+'/data_preprocessing.ipynb',
