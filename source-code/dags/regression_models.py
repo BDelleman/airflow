@@ -30,7 +30,7 @@ dag = DAG(
 
 check_buckets = BashOperator(
     task_id='check_buckets',
-    bash_command='echo input_bucket',
+    bash_command='echo $input_bucket',
     dag=dag
 )
 data_preprocessing = PapermillOperator(
