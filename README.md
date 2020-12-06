@@ -18,7 +18,8 @@ gcloud composer environments create $COMPOSER_ENV_NAME \
     --machine-type n1-standard-1 \
     --node-count 3 \
     --disk-size 20 \
-    --python-version 3
+    --python-version 3 \
+    --airflow-version 1.10.12
 
 #Set composer variables
 
