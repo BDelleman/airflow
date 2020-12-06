@@ -4,7 +4,7 @@ from airflow import DAG
 from airflow.operators.bash_operator import BashOperator
 from airflow.operators.python_operator import PythonOperator
 from airflow.operators.papermill_operator import PapermillOperator
-
+"""
 project = models.Variable.get('gcp_project')
 region = models.Variable.get('gcp_region')
 zone = models.Variable.get('gcp_zone')
@@ -12,13 +12,15 @@ input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_test')
 output_bucket_name = models.Variable.get('gcs_output_bucket_test')
 output_bucket = 'gs://' + output_bucket_name
 output_prefix = 'output'
-
+"""
 default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
-    'schedule_interval': '@daily',
+    'schedule_interval': '@daily'
+    """
     'project': project,
     'zone': zone,
     'region': region,
+    """
 }
 with models.DAG(
     'regression_models',
