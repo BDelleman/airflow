@@ -28,6 +28,10 @@ dag = DAG(
     description='DAG to train multiple regression models'
 )
 
+check_buckets = BashOperator(
+    task_id='check_buckets',
+    bash_command='echo input_bucket'
+)
 data_preprocessing = PapermillOperator(
     task_id='data_preprocessing',
     input_nb=input_bucket+'/data_preprocessing.ipynb',

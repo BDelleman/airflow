@@ -26,6 +26,12 @@ cd ~/airflow/env-setup
 chmod +x set_composer_variables.sh
 ./set_composer_variables.sh
 
+#Install new pypi packages in cluster
+
+gcloud composer environments update $COMPOSER_ENV_NAME \
+--update-pypi-packages-from-file ~/airflow/env-setup/requirements.txt \
+--location ${COMPOSER_REGION}
+
 #Create buckets for in - and output
 
 cd ~/airflow/env-setup
@@ -44,6 +50,17 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
     --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
     --role=roles/composer.worker
 
+#Export URL for bucket as env variable
+export COMPOSER_DAG_BUCKET=$(gcloud composer environments describe $COMPOSER_ENV_NAME \
+    --location $COMPOSER_REGION \
+    --format="get(config.dagGcsPrefix)")
+
+#Export name of service account in order to have access to bucket
+export COMPOSER_SERVICE_ACCOUNT=$(gcloud composer environments describe $COMPOSER_ENV_NAME \
+    --location $COMPOSER_REGION \
+    --format="get(config.nodeConfig.serviceAccount)")
+
+
 cd ~/airflow/source-code/build-pipeline
 gcloud builds submit --config=build-deploy.yaml --substitutions=\
 REPO_NAME=$SOURCE_CODE_REPO,\
@@ -52,10 +69,5 @@ _COMPOSER_DAG_BUCKET=$COMPOSER_DAG_BUCKET,\
 _COMPOSER_ENV_NAME=$COMPOSER_ENV_NAME,\
 _COMPOSER_REGION=$COMPOSER_REGION,\
 _COMPOSER_DAG_NAME_TEST=$COMPOSER_DAG_NAME_TEST
-
-gcloud composer environments update $COMPOSER_ENV_NAME \\
---update-pypi-packages-from-file ~/airflow/env-setup/requirements.txt \\
---location ${COMPOSER_REGION}
-
 
 #CHECKPOINT WERKT
