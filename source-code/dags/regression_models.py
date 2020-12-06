@@ -35,28 +35,22 @@ with models.DAG(
         parameters={},
     )
 
+    multi_linear_regression = PapermillOperator(
+        task_id='multi_linear_regression',
+        input_nb=input_bucket+'/multi_linear_regression.ipynb',
+        output_nb='/home/airflow/gcs/data/multi_linear_regression_out.ipynb',
+        parameters={},
+        dag=dag
+    )
+
+    random_forest_regression = PapermillOperator(
+        task_id='random_forest_regression',
+        input_nb=input_bucket+'/random_forest_regression.ipynb',
+        output_nb='/home/airflow/gcs/data/random_forest_regression_out.ipynb',
+        parameters={},
+    )
 
 """"
-
-
-multi_linear_regression = PapermillOperator(
-    task_id='multi_linear_regression',
-    input_nb='/home/airflow/gcs/data/multi_linear_regression.ipynb',
-    output_nb='/home/airflow/gcs/data/multi_linear_regression_out.ipynb',
-    parameters={},
-    dag=dag
-)
-
-
-random_forest_regression = PapermillOperator(
-    task_id='random_forest_regression',
-    input_nb='/home/airflow/gcs/data/random_forest_regression.ipynb',
-    output_nb='/home/airflow/gcs/data/random_forest_regression_out.ipynb',
-    parameters={},
-    dag=dag
-)
-
-
 evaluate_models = PapermillOperator(
     task_id='data_processing',
     input_nb='/home/airflow/gcs/data/evaluate_models.ipynb',
