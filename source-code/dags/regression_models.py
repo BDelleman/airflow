@@ -21,25 +21,20 @@ default_args = {
     'zone': zone,
     'region': region,
 }
-
-dag = DAG(
+with models.DAG(
     dag_id='regression_models',
     default_args=default_args,
-    description='DAG to train multiple regression models'
-)
-
-check_buckets = BashOperator(
-    task_id='check_buckets',
-    bash_command='echo $input_bucket',
-    dag=dag
-)
-data_preprocessing = PapermillOperator(
-    task_id='data_preprocessing',
-    input_nb=input_bucket+'/data_preprocessing.ipynb',
-    output_nb=output_bucket+'/data_preprocessing_out.ipynb',
-    parameters={},
-    dag=dag
-)
+    description='DAG to train multiple regression models') as dag:
+    check_buckets = BashOperator(
+        task_id='check_buckets',
+        bash_command='echo $input_bucket',
+    )
+    data_preprocessing = PapermillOperator(
+        task_id='data_preprocessing',
+        input_nb=input_bucket+'/data_preprocessing.ipynb',
+        output_nb=output_bucket+'/data_preprocessing_out.ipynb',
+        parameters={},
+    )
 
 """"
 multi_linear_regression = PapermillOperator(
