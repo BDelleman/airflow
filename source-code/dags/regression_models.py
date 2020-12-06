@@ -26,13 +26,13 @@ with models.DAG(
     default_args=default_args) as dag:
     check_buckets = BashOperator(
         task_id='check_buckets',
-        bash_command='echo input_bucket',
+        bash_command='echo $input_bucket',
     )
-    
+
     data_preprocessing = PapermillOperator(
         task_id='data_preprocessing',
-        input_nb=input_bucket+'/data_preprocessing.ipynb',
-        output_nb=output_bucket+'/data_preprocessing_out.ipynb',
+        input_nb='gs://airflowvs1-composer-input-test/data_preprocessing.ipynb',
+        output_nb='gs://airflowvs1-composer-result-test/data_preprocessing_out.ipynb',
         parameters={},
     )
 
