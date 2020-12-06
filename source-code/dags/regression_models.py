@@ -31,8 +31,8 @@ with models.DAG(
 
     data_preprocessing = PapermillOperator(
         task_id='data_preprocessing',
-        input_nb='/data/data_preprocessing.ipynb',
-        output_nb='/data/data_preprocessing_out.ipynb',
+        input_nb='data/data_preprocessing.ipynb',
+        output_nb='data/data_preprocessing_out.ipynb',
         parameters={},
     )
 
