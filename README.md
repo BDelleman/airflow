@@ -1,6 +1,6 @@
 # Airflow cluster on Google Cloud
 
-Repository to create Airflow instance on google cloud
+Repository to create Airflow instance on google cloud.
 
 # Preqrequisites
 - Google account
