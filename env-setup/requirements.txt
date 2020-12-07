@@ -1,4 +1,4 @@
-papermill==[gcs]2.2.2
+papermill[gcs]==2.2.2
 black==19.10b0
 ipykernel==5.3.4
 scikit-learn==0.23.2
