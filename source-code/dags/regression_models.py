@@ -68,4 +68,4 @@ cleanup = PapermillOperator(
     dag=dag
 )
 """
-check_buckets >> data_preprocessing >> multi_linear_regression >> random_forest_regression
+check_buckets >> data_preprocessing >> multi_linear_regression
