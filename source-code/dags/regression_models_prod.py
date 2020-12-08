@@ -8,8 +8,7 @@ from airflow.operators.papermill_operator import PapermillOperator
 project = models.Variable.get('gcp_project')
 region = models.Variable.get('gcp_region')
 zone = models.Variable.get('gcp_zone')
-input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_test')
-output_bucket_name = models.Variable.get('gcs_output_bucket_test')
+input_bucket = 'gs://' + models.Variable.get('gcs_input_bucket_prod')
 
 default_args = {
     'start_date': airflow.utils.dates.days_ago(0),
