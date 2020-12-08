@@ -42,14 +42,6 @@ gcloud composer environments update $COMPOSER_ENV_NAME \
 --location ${COMPOSER_REGION}
 ```
 
-Create buckets for in - and output
-
-```sh
-cd ~/airflow/env-setup
-chmod +x create_buckets.sh
-./create_buckets.sh
-```
-
 Add the composer.worker role to the Cloud Build service account so the Cloud Build job can trigger the data workflow in Cloud Composer
 
 ```sh
@@ -72,6 +64,13 @@ export COMPOSER_SERVICE_ACCOUNT=$(gcloud composer environments describe $COMPOSE
     --location $COMPOSER_REGION \
     --format="get(config.nodeConfig.serviceAccount)")
 ```
+Create buckets for in - and output
+
+```sh
+cd ~/airflow/env-setup
+chmod +x create_buckets.sh
+./create_buckets.sh
+```
 
 Trigger cloud build
 
@@ -86,5 +85,6 @@ _COMPOSER_REGION=$COMPOSER_REGION,\
 _COMPOSER_DAG_NAME_TEST=$COMPOSER_DAG_NAME_TEST
 ```
 
+Now that we see our build is working we want to trigger it with every commit. 
 #TODO 
 Add steps for build trigger, database
