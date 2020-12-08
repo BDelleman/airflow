@@ -31,7 +31,7 @@ with models.DAG(
 
     multi_linear_regression = PapermillOperator(
         task_id='multi_linear_regression',
-        input_nb=input_bucket+'notebooks/multi_linear_regression.ipynb',
+        input_nb=input_bucket+'/notebooks/multi_linear_regression.ipynb',
         output_nb='/home/airflow/gcs/data/multi_linear_regression_out.ipynb',
         parameters={},
         dag=dag
