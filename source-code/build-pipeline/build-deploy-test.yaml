@@ -1,6 +1,6 @@
 steps:
 - name: gcr.io/cloud-builders/git
-  args: ['clone', 'https://github.com/BDelleman/$REPO_NAME', 'dev']
+  args: ['clone','--branch dev', 'https://github.com/BDelleman/$REPO_NAME']
   id: 'check-out-source-code'
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', '-r', 'notebooks', 'gs://${_COMPOSER_INPUT_BUCKET}']
