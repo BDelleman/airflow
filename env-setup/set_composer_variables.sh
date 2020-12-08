@@ -9,7 +9,7 @@ variables["gcp_project"]="${GCP_PROJECT_ID}"
 variables["gcp_region"]="${COMPOSER_REGION}"
 variables["gcp_zone"]="${COMPOSER_ZONE_ID}"
 variables["gcs_input_bucket_test"]="${INPUT_BUCKET_TEST}"
-variables["gcs_input_bucket_prod"]="${INPUT_BUCKET_TEST_PROD}"
+variables["gcs_input_bucket_prod"]="${INPUT_BUCKET_PROD}"
 
 for i in "${!variables[@]}"; do
   gcloud composer environments run "${COMPOSER_ENV_NAME}" \

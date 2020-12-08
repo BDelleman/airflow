@@ -6,7 +6,7 @@
 
 gsutil ls -L "gs://${INPUT_BUCKET_TEST}" 2>/dev/null \
 || gsutil mb -c regional -l "${COMPOSER_REGION}" "gs://${INPUT_BUCKET_TEST}"
-gsutil ls -L "gs://${INPUT_BUCKET_TEST}" 2>/dev/null \
+gsutil ls -L "gs://${INPUT_BUCKET_PROD}" 2>/dev/null \
 || gsutil mb -c regional -l "${COMPOSER_REGION}" "gs://${INPUT_BUCKET_PROD}"
 
 
