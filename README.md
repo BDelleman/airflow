@@ -72,6 +72,18 @@ chmod +x create_buckets.sh
 ./create_buckets.sh
 ```
 
+```sh
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+    --role=roles/composer.admin
+```
+
+```sh
+ gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+    --role=roles/composer.worker  
+```
+ 
 Trigger cloud build
 
 ```sh

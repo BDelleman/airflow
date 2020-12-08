@@ -13,7 +13,7 @@ export COMPOSER_REGION='europe-west3'
 export RESULT_BUCKET_REGION="${COMPOSER_REGION}"
 export COMPOSER_ZONE_ID='europe-west3-c'
 
-export COMPOSER_ENV_NAME='airflowdemotest'
+export COMPOSER_ENV_NAME='airflowtest'
 export COMPOSER_DAG_NAME_TEST='regression_models'
 export SOURCE_CODE_REPO='airflow'
 
