@@ -49,6 +49,12 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
     --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
     --role=roles/composer.worker
 ```
+
+```sh
+gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
+    --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
+    --role=roles/composer.admin
+```
 Export URL for bucket as env variable
 
 ```sh
@@ -72,18 +78,6 @@ chmod +x create_buckets.sh
 ./create_buckets.sh
 ```
 
-```sh
-gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
-    --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
-    --role=roles/composer.admin
-```
-
-```sh
- gcloud projects add-iam-policy-binding $GCP_PROJECT_ID \
-    --member=serviceAccount:$PROJECT_NUMBER@cloudbuild.gserviceaccount.com \
-    --role=roles/composer.worker  
-```
- 
 Trigger cloud build
 
 ```sh
@@ -99,4 +93,4 @@ _COMPOSER_DAG_NAME_TEST=$COMPOSER_DAG_NAME_TEST
 
 Now that we see our build is working we want to trigger it with every commit. 
 #TODO 
-Add steps for build trigger, database
+Add steps for build trigger, database.

@@ -28,12 +28,6 @@ with models.DAG(
         task_id='check_buckets',
         bash_command='echo $input_bucket',
     )
-    data_preprocessing = PapermillOperator(
-        task_id='data_preprocessing',
-        input_nb='/home/airflow/gcs/data/notebooks/data_preprocessing.ipynb',
-        output_nb='/home/airflow/gcs/data/data_preprocessing_out.ipynb',
-        parameters={},
-    )
 
     multi_linear_regression = PapermillOperator(
         task_id='multi_linear_regression',
