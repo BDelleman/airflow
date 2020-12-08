@@ -1,4 +1,4 @@
 #!/bin/bash
 
-PROJECT_ID='terraform-295217'
+PROJECT_ID='{YOUR_PROJECT}'
 gcloud projects delete $PROJECT_ID --quiet
