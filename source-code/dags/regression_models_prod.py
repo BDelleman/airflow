@@ -19,7 +19,7 @@ default_args = {
 
 }
 with models.DAG(
-    'regression_models',
+    'regression_models_prod',
     default_args=default_args) as dag:
     data_preprocessing = PapermillOperator(
         task_id='data_preprocessing',
