@@ -6,10 +6,12 @@
 
 gsutil ls -L "gs://${INPUT_BUCKET_TEST}" 2>/dev/null \
 || gsutil mb -c regional -l "${COMPOSER_REGION}" "gs://${INPUT_BUCKET_TEST}"
-gsutil ls -L "gs://${RESULT_BUCKET_TEST}" 2>/dev/null \
-|| gsutil mb -c regional -l "${COMPOSER_REGION}" "gs://${RESULT_BUCKET_TEST}"
+gsutil ls -L "gs://${INPUT_BUCKET_PROD}" 2>/dev/null \
+|| gsutil mb -c regional -l "${COMPOSER_REGION}" "gs://${INPUT_BUCKET_PROD}"
+
 
 gsutil acl ch -u "${COMPOSER_SERVICE_ACCOUNT}:R" \
 "gs://${INPUT_BUCKET_TEST}"
-gsutil acl ch -u "${COMPOSER_SERVICE_ACCOUNT}:W" \
- "gs://${RESULT_BUCKET_TEST}"
+gsutil acl ch -u "${COMPOSER_SERVICE_ACCOUNT}:R" \
+"gs://${INPUT_BUCKET_PROD}"
+
